@@ -1,10 +1,15 @@
 hailstone-addon-index 1
-# Servers with a Hailstone add-on of their own. Hailstone suggests the add-on, on its login screen, to a player
-# whose login server lists one of its worlds. Format: README.md. Sign with tools/sign.sh after every change.
+# Hailstone's add-ons. Hailstone lists them all in its add-on store, and suggests a server's own add-on, on its login
+# screen, to a player whose login server lists one of its worlds. An add-on with no world line is for any server: it
+# is in the store and never suggested. Format: README.md. Sign with tools/sign.sh after every change.
 #
 # addon <name> <owner/repo> <the Ed25519 key its hailstone-addon.txt is signed with>
 # world <name> <login server host, or * for any> <world name as the login server lists it>
 
 addon projecttriune projecthailstone/hailstone-projecttriune-addon 1cec1c02c81c578912f0b8dcae84277c60ddb80271cfa28793cc06bc7ae51608
 world projecttriune * Project Triune
-signature 1a3b984ff49091a44de38a2d0a358867b3d96073b3a88c5294d3d427ae5469420817be83891dd8c6141e5ef6a62aadae4922106fdf2bb660ee2ef91d0da3b706
+
+# For any server.
+addon autocombat projecthailstone/hailstone-autocombat 1cec1c02c81c578912f0b8dcae84277c60ddb80271cfa28793cc06bc7ae51608
+addon dpsmeter projecthailstone/hailstone-dpsmeter 1cec1c02c81c578912f0b8dcae84277c60ddb80271cfa28793cc06bc7ae51608
+signature 389afc6b9f049594d77008dc38e27dc0ebd9fa6d248808850f980686994072ff9d0b2f8e3519ab58e8409e8c199d2d905e618607c91c7c4c51bee3f38570130f

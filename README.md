@@ -1,8 +1,11 @@
 # Hailstone add-on index
 
-Some EQEmu servers have a [Hailstone](https://github.com/projecthailstone/hailstone-client) add-on of their own: a
-plugin or script that adds the server's custom windows and features. This repository lists those servers, so that
-Hailstone can point a new player to the right add-on.
+The list of [Hailstone](https://github.com/projecthailstone/hailstone-client)'s add-ons: plugins and scripts that
+add windows and features. Hailstone's add-on store, on its login screen, shows every add-on listed here, with an
+Install button.
+
+Some EQEmu servers also have an add-on of their own, which adds the server's custom windows and features. For those,
+this list also names the server's worlds, so that Hailstone can point a new player to the right add-on.
 
 When a player logs in to a server whose world is listed here and they don't have its add-on yet, Hailstone's login
 screen says so and offers **Look at it**, **Not now** and **Don't ask again**. **Look at it** opens the add-on
@@ -24,14 +27,14 @@ signature <128 hex digits>
 | Record | Meaning |
 |---|---|
 | `addon` | The add-on. `name` is the `name` in its `hailstone-addon.txt`, `owner/repo` is its GitHub repository (public: where players install it from), and `key` is the Ed25519 public key (64 hex digits) its manifest is signed with. Hailstone refuses to install a suggested add-on whose manifest has another name or isn't signed with this key. |
-| `world` | A world the add-on is for. `login server` is the login server's host as players type it (`*` matches any), and `world name` is the rest of the line, exactly as the login server lists the world (case doesn't matter). An add-on may have several `world` lines. |
+| `world` | A world the add-on is for. An add-on with no `world` line is for any server: it is in the store but never suggested. `login server` is the login server's host as players type it (`*` matches any), and `world name` is the rest of the line, exactly as the login server lists the world (case doesn't matter). An add-on may have several `world` lines. |
 | `signature` | The Hailstone release key's signature over everything above it. Hailstone ignores an index that isn't signed with that key. |
 
 Lines starting with `#` are comments. Hailstone skips records it doesn't know.
 
-## Adding a server
+## Adding an add-on or a server
 
-Open a pull request that adds an `addon` line and its `world` lines. Your add-on must already install from its
+Open a pull request that adds an `addon` line, and for a server's own add-on its `world` lines. Your add-on must already install from its
 repository with Hailstone's add-on manager, and its manifest must be signed (`hailstone_sign sign`, see Hailstone's
 docs/addons.md "For authors"). A maintainer signs the file after merging.
 
